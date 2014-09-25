@@ -3,7 +3,9 @@
 int main()
 {
   printf("Welcome to Calculator. \n");						//Welcome Screen
-  
+    do
+    {
+    char check;
     printf("Please select an Arithmetic operation from the following: \n");			
     printf("1)Addition \t 2)Subtraction \t 3)Multiplication \t 4)Division \n");
     int ch, var1, var2;
@@ -21,7 +23,9 @@ int main()
       case 4: res=var1/var2; 
     } 
     printf("%d operation %d \n", var1, var2);
-    printf("\nThe Result= %f \n", res);     				//Printing result
-        
+    printf("\nThe Result= %f \n", res); 
+    printf("Continue y/n? \n");
+    }while(check!='y');    				//Printing result
+ scanf("%c", check);    
 return 0;
 }
