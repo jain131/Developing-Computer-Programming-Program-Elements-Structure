@@ -17,19 +17,18 @@ int main()
       printf("Operand 1: "); 
       scanf("%f", &var1);										//Input of variable1
       printf("Operand 2: "); 
-      scanf("%f", &var2);										//Input of variable2
+      scanf("%f%*c", &var2);										//Input of variable2
       switch(ch) 												//Switch case construct: Statements for different conditions
       {
         case 1: res=var1+var2; break;
         case 2: res=var1-var2; break;
         case 3: res=var1*var2; break;
         case 4: res=var1/var2; 
-     } 
+      } 
       printf("%f operation %f \n", var1, var2);
       printf("\nThe Result= %f \n", res); 			//Displaying result from file
-      printf("Continue y/n?  \n");					//Asking user to continue or exit
-      scanf("%c",&check);							//Getting rid of any garbage data in buffer 
-      scanf("%c",&check);
+      printf("Continue y/n?  ");					//Asking user to continue or exit
+      scanf("%c",&check);					
       
     }while(check!='n');    				
    
