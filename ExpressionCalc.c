@@ -17,7 +17,10 @@ int main()
       printf("Operand 1: "); 
       scanf("%f", &var1);										//Input of variable1
       printf("Operand 2: "); 
-      scanf("%f%*c", &var2);										//Input of variable2
+      scanf("%f%*c", &var2);									//This is an optional starting asterisk indicates 
+      															//that the data is to be read from the stream but 
+      															//ignored, i.e. it is not stored in the corresponding argument.	
+      															//Input of variable2
       switch(ch) 												//Switch case construct: Statements for different conditions
       {
         case 1: res=var1+var2; break;
