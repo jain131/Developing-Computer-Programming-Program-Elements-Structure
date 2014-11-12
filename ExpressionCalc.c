@@ -1,23 +1,45 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
-  printf("Welcome to Calculator. \n");						//Welcome Screen
+  printf("Welcome to Calculator. \n");							//Welcome Screen
   char check;
+  FILE * Log;
+  
+      
     do
     {
+      Log = fopen ("Log.txt", "w+");							//Opening a new file for Logging info. Opening in reading and writing mode
+      															//Opening file in loop so as to get new values of RES every time.
       printf("Please select an Arithmetic operation from the following: \n");			
-      printf("1)Addition \t 2)Subtraction \t 3)Multiplication \t 4)Division \n");
+      printf("1)Addition \t 2)Subtraction \t 3)Multiplication \t 4)Division ");
       int ch;
+      char opt;
       float var1, var2;
       float res;
       
-      scanf("%d", &ch);										//Input of operation
-      printf("Enter any float values for operands: \n");
-      printf("Operand 1: "); 
-      scanf("%f", &var1);										//Input of variable1
+      scanf(" %d", &ch);											//Input of operation, A SPACE before %d makes scanf ignore whitespace
+      
+      printf("Do you want to use the previous result as one of the operands (Y/N)? \n");
+      scanf(" %c", &opt);													//Asking user if he wants to use saved previous result
+      
+      printf("Enter any values for operand(s): \n");
+      if(opt=='Y' || opt=='y')
+        {
+          printf("Operand 1 is the previous result: ");
+          fscanf(Log, "%f", &var1);									//Taking value from the LOG text file for variable 1
+          printf("%f \n", var1);
+        }  
+      
+      else 
+        {
+          printf("Operand 1: "); 
+          scanf("%f", &var1);										//Input of variable1
+        }
+        
       printf("Operand 2: "); 
-      scanf("%f%*c", &var2);									//This is an optional starting asterisk indicates 
+      scanf(" %f", &var2);									//This is an optional starting asterisk indicates 
       															//that the data is to be read from the stream but 
       															//ignored, i.e. it is not stored in the corresponding argument.	
       															//Input of variable2
@@ -28,12 +50,18 @@ int main()
         case 3: res=var1*var2; break;
         case 4: res=var1/var2; 
       } 
-      printf("%f operation %f \n", var1, var2);
-      printf("\nThe Result= %f \n", res); 			//Displaying result from file
-      printf("Continue y/n?  ");					//Asking user to continue or exit
-      scanf("%c",&check);					
+      
+      printf("\nThe Result= %f \n", res); 						//Displaying result from file
+      
+      
+      fprintf(Log, "%f \n", res);								//Logging the result
+      							 
+      printf("Continue y/n?  ");								//Asking user to continue or exit
+      scanf(" %c",&check);										//A SPACE before %d makes scanf ignore whitespace
       
     }while(check!='n');    				
    
-return 0;
+   fclose(Log);													//Closing opened text file
+   
+return(0);
 }
