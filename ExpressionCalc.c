@@ -6,12 +6,10 @@ int main()
   printf("Welcome to Calculator. \n");							//Welcome Screen
   char check;
   FILE * Log;
-  
+  Log = fopen ("Log.txt", "w+");							//Opening a new file for Logging info. Opening in reading and writing mode
       
     do
-    {
-      Log = fopen ("Log.txt", "w+");							//Opening a new file for Logging info. Opening in reading and writing mode
-      															//Opening file in loop so as to get new values of RES every time.
+    { 															
       printf("Please select an Arithmetic operation from the following: \n");			
       printf("1)Addition \t 2)Subtraction \t 3)Multiplication \t 4)Division ");
       int ch;
@@ -28,7 +26,8 @@ int main()
       if(opt=='Y' || opt=='y')
         {
           printf("Operand 1 is the previous result: ");
-          fscanf(Log, "%f", &var1);									//Taking value from the LOG text file for variable 1
+          rewind(Log);
+          fscanf(Log, " %f", &var1);									//Taking value from the LOG text file for variable 1
           printf("%f \n", var1);
         }  
       
@@ -53,8 +52,8 @@ int main()
       
       printf("\nThe Result= %f \n", res); 						//Displaying result from file
       
-      
-      fprintf(Log, "%f \n", res);								//Logging the result
+      rewind(Log);
+      fprintf(Log, " %f", res);								//Logging the result
       							 
       printf("Continue y/n?  ");								//Asking user to continue or exit
       scanf(" %c",&check);										//A SPACE before %d makes scanf ignore whitespace
