@@ -76,7 +76,7 @@ int main()
 return(0);
 }
 
-void Extra()
+void Extra()												//! Function to use Extra features of the Calculator
 { 
   int ch,r;
   printf("\nSelect from the following options: \n1)Fibonacci Series \n");
@@ -102,5 +102,7 @@ void CalcFib(int r)											//! Function to print Fibonacci Series according t
     }  
   printf("\n"); 
 }
+
+// \image FlowchartCalc.png
 
 
