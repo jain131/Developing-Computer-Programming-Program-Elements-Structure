@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void CalcFib(int r);												//Function prototype to calculate Fibonacci series
+
 int main()
 {
   printf("Welcome to Calculator. \n");							//Welcome Screen
   char check;
+  int r;
   FILE * Log;
-  Log = fopen ("Log.txt", "w+");							//Opening a new file for Logging info. Opening in reading and writing mode
+  Log = fopen ("Log.txt", "w+");							//! \file Opening a new file for Logging info. Opening in reading and writing mode
       
     do
     { 															
       printf("Please select an Arithmetic operation from the following: \n");			
-      printf("1)Addition \t 2)Subtraction \t 3)Multiplication \t 4)Division ");
+      printf("1)Addition \t 2)Subtraction \t 3)Multiplication \t 4)Division \t 5)Fibonacci Sequence ");
       int ch;
       char opt;
       float var1, var2;
@@ -47,7 +50,8 @@ int main()
         case 1: res=var1+var2; break;
         case 2: res=var1-var2; break;
         case 3: res=var1*var2; break;
-        case 4: res=var1/var2; 
+        case 4: res=var1/var2; break;
+        case 5: printf("Enter the range of Fibonacci series: "); scanf(" %d",&r); CalcFib(r); break;  //Calling the CalcFib() function and passing range as parameter.
       } 
       
       printf("\nThe Result= %f \n", res); 						//Displaying result from file
@@ -60,7 +64,24 @@ int main()
       
     }while(check!='n');    				
    
-   fclose(Log);													//Closing opened text file
+   fclose(Log);													//! \file Closing opened text file
    
 return(0);
+}
+
+void CalcFib(int r)
+{
+	long int j=0,k=1,res;
+
+    printf("FIBONACCI SERIES: ");
+    printf("%ld %ld",j,k); //printing firts two values.
+
+    for(int i=2;i<r;i++)
+    {
+      res=j+k;
+      res=k;
+      k=res; 
+      printf(" %ld",k);
+    }  
+
 }
